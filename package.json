@@ -1,0 +1,14 @@
+{
+  "name": "ai-video-mini-app",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=22.13" },
+  "scripts": {
+    "dev": "node --env-file-if-exists=.env server.mjs",
+    "start": "node --env-file-if-exists=.env server.mjs",
+    "bot": "node --env-file-if-exists=.env bot.mjs",
+    "leads": "node --env-file-if-exists=.env leads.mjs",
+    "check": "node --check server.mjs && node --check bot.mjs && node --check enrollments.mjs && node --check leads.mjs && node --check public/course.js && node --check public/enrollment-fields.js && node --check public/app.js"
+  }
+}

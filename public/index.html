@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f4f7ff">
+  <meta name="description" content="AI yordamida professional video yaratish kursi. Video namunalari, kurs yo‘nalishlari va yozilish formasi.">
+  <title>AI yordamida video yaratish</title>
+  <link rel="preload" href="/assets/rethink-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
+  <script src="https://telegram.org/js/telegram-web-app.js" defer></script>
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <svg class="icon-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <symbol id="arrow" viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol>
+    <symbol id="play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z" fill="currentColor" stroke-linejoin="round"/></symbol>
+    <symbol id="send" viewBox="0 0 24 24"><path d="m21 3-7 18-4-8-8-4 19-6ZM10 13 21 3"/></symbol>
+    <symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="grid" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18m-12 0v11"/></symbol>
+    <symbol id="menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+  </svg>
+
+  <a class="skip" href="#main">Asosiy kontentga o‘tish</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <button class="menu-toggle icon-button" type="button" aria-label="Menyuni ochish" aria-controls="navigation" aria-expanded="false"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg></button>
+      <nav class="navigation" aria-label="Sahifa bo‘limlari" id="navigation">
+        <a href="#namunalar">Namunalar</a>
+        <a href="#dastur">Kurs haqida</a>
+        <a href="#savollar">Savollar</a>
+      </nav>
+      <a class="button button-outline header-cta" href="#yozilish"><svg class="icon" aria-hidden="true"><use href="#send"/></svg>Kursga yozilish</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero ambient-surface" aria-labelledby="hero-title">
+      <div class="ambient-background" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <h1 id="hero-title">AI yordamida<br> video yarating</h1>
+          <p class="hero-intro" data-intro>G‘oyadan tayyor rolikkacha. Kadr yaratish, unga harakat berish va montaj qilishni o‘rganing.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#dastur">Kurs bilan tanishish <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+            <button class="button button-quiet" type="button" data-demo="mountain"><svg class="icon" aria-hidden="true"><use href="#play"/></svg>Demoni ko‘rish</button>
+          </div>
+        </div>
+
+        <div class="editor" aria-label="Qor chizig‘i demosining montaj ko‘rinishi">
+          <div class="editor-bar" aria-hidden="true">
+            <span class="editor-brand"><svg class="icon"><use href="#grid"/></svg> Montaj</span>
+            <span class="editor-project">Qor chizig‘i <span>/</span> Asosiy sahna</span>
+            <span class="editor-timecode">00:00</span>
+          </div>
+          <button class="editor-image" type="button" data-demo="mountain" aria-label="Qor chizig‘i demosini ko‘rish">
+            <img src="/assets/mountain.webp" alt="Moviy kurtkali sayohatchi qorli tog‘larga qarab turibdi" width="1200" height="675" fetchpriority="high">
+            <video class="editor-preview" muted playsinline preload="metadata" aria-hidden="true" hidden></video>
+            <span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#play"/></svg></span>
+          </button>
+          <div class="editor-timeline">
+            <div class="timeline-labels" aria-hidden="true"><span>00:00</span><span>00:02</span><span>00:04</span><span>00:06</span></div>
+            <div class="timeline-tracks">
+              <div class="track track-video" aria-hidden="true"><span>Kadr 01</span><span>Kadr 02</span><span>Kadr 03</span></div>
+              <div class="track track-motion" aria-hidden="true"><span>Kamera harakati</span><span></span></div>
+              <input class="timeline-control" type="range" min="0" max="6" step="0.25" value="0" aria-label="Demo vaqt chizig‘i" aria-valuetext="0 soniya" aria-describedby="timeline-hint">
+            </div>
+            <p class="timeline-hint" id="timeline-hint">Kadrni ko‘rish uchun vaqt chizig‘ini suring</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="namunalar" aria-labelledby="examples-title">
+      <div class="section-intro"><h2 id="examples-title">Video namunalari</h2><p>AI yordamida yaratilgan kadrlardan uchta qisqa animatsion demo.</p></div>
+      <div class="examples">
+        <button class="example" type="button" data-demo="mountain" aria-label="Qor chizig‘i demosini ko‘rish">
+          <span class="example-image"><img src="/assets/mountain.webp" width="1200" height="675" loading="lazy" alt=""><span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#play"/></svg></span></span>
+          <span class="example-caption"><strong>Qor chizig‘i</strong><span>Kinematik kadr</span></span>
+        </button>
+        <button class="example" type="button" data-demo="product" aria-label="Studiyadagi mahsulot demosini ko‘rish">
+          <span class="example-image"><img src="/assets/product.webp" width="1200" height="675" loading="lazy" alt=""><span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#play"/></svg></span></span>
+          <span class="example-caption"><strong>Studiyadagi mahsulot</strong><span>Mahsulot reklamasi</span></span>
+        </button>
+        <button class="example" type="button" data-demo="story" aria-label="Samarqand oqshomi demosini ko‘rish">
+          <span class="example-image"><img src="/assets/story.webp" width="1200" height="675" loading="lazy" alt=""><span class="play-circle"><svg class="icon" aria-hidden="true"><use href="#play"/></svg></span></span>
+          <span class="example-caption"><strong>Samarqand oqshomi</strong><span>Vizual hikoya</span></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="section section-tinted ambient-surface" id="dastur" aria-labelledby="topics-title">
+      <div class="ambient-background" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="container split-section">
+        <div class="section-intro"><h2 id="topics-title">Kurs yo‘nalishlari</h2><p data-program-note>Yakuniy dars dasturi keyin e’lon qilinadi.</p></div>
+        <ol class="topics" data-topics role="list"></ol>
+      </div>
+    </section>
+
+    <section class="section container split-section" id="savollar" aria-labelledby="faq-title">
+      <div class="section-intro"><h2 id="faq-title">Ko‘p so‘raladigan savollar</h2></div>
+      <div class="faq" data-faq></div>
+    </section>
+
+    <section class="enrollment" id="yozilish" aria-labelledby="enrollment-title">
+      <div class="container enrollment-inner">
+        <div class="enrollment-copy">
+          <h2 id="enrollment-title" tabindex="-1">Kursga yozilish</h2>
+          <p>Kurs bo‘yicha bog‘lanishimiz uchun ma’lumotlaringizni qoldiring.</p>
+          <p class="enrollment-price" data-price hidden></p>
+        </div>
+        <form class="enrollment-form" action="/api/enrollments" method="post" aria-labelledby="enrollment-title">
+          <div class="form-field">
+            <label for="enrollment-name">Ismingiz</label>
+            <input id="enrollment-name" name="name" type="text" autocomplete="given-name" maxlength="80" required aria-describedby="enrollment-name-error">
+            <span id="enrollment-name-error" class="field-error" hidden></span>
+          </div>
+          <div class="form-field">
+            <label for="enrollment-phone">Telefon raqamingiz</label>
+            <input id="enrollment-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="+998 90 123 45 67" required aria-describedby="enrollment-phone-error">
+            <span id="enrollment-phone-error" class="field-error" hidden></span>
+          </div>
+          <div class="form-field">
+            <label for="enrollment-telegram">Telegram username (ixtiyoriy)</label>
+            <input id="enrollment-telegram" name="telegramUsername" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="33" placeholder="@username" aria-describedby="enrollment-telegram-error">
+            <span id="enrollment-telegram-error" class="field-error" hidden></span>
+          </div>
+          <button class="button button-primary" type="submit">Ariza yuborish</button>
+          <div class="form-status" role="status" aria-atomic="true"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container footer">
+    <span>AI yordamida video yaratish kursi</span>
+    <a class="back-to-top" href="#top">Sahifa boshiga <svg class="icon" aria-hidden="true"><use href="#arrow"/></svg></a>
+  </footer>
+
+  <dialog class="demo-dialog" aria-labelledby="demo-title">
+    <div class="demo-header"><h2 id="demo-title"></h2><form method="dialog"><button class="icon-button" type="submit" aria-label="Videoni yopish" autofocus><svg class="icon" aria-hidden="true"><use href="#close"/></svg></button></form></div>
+    <video controls playsinline preload="none" aria-label="Animatsion demo"></video>
+    <p class="demo-error" role="status" hidden>Video yuklanmadi. Oynani yopib, qayta urinib ko‘ring.</p>
+    <p class="demo-description"></p>
+  </dialog>
+</body>
+</html>
