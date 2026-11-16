@@ -12,7 +12,7 @@ export const course = {
   questions: [
     { title: 'Kurs kimlar uchun?', description: 'AI yordamida video tayyorlashni o‘rganmoqchi bo‘lgan ijodkorlar, kontent mualliflari va kichik biznes egalari uchun.' },
     { title: 'Dars dasturi qachon e’lon qilinadi?', description: 'Yakuniy dastur tayyor bo‘lgach, darslar ro‘yxati shu sahifada e’lon qilinadi.' },
-    { title: 'Demolarni qayerda ko‘rish mumkin?', description: 'Namuna videolar shu sahifadagi «Video namunalari» bo‘limida ochiladi.' },
+    { title: 'Namunalarni qayerda ko‘rish mumkin?', description: 'To‘rt xil uslubdagi kadrlar «Tasvir namunalari» bo‘limida. Qisqa videoni bosh ekrandagi «Demoni ko‘rish» tugmasi ochadi.' },
   ],
 };
 

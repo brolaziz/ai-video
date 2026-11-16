@@ -84,7 +84,7 @@ async function handle(update) {
 try {
   await api('setMyCommands', { commands });
   await api('setMyShortDescription', { short_description: course.title });
-  await api('setMyDescription', { description: `${course.title}. ${course.intro} Mini App’da video namunalari va kursga yozilish ma’lumotlari bor.` });
+  await api('setMyDescription', { description: `${course.title}. ${course.intro} Mini App’da tasvir namunalari va kursga yozilish ma’lumotlari bor.` });
   await api('setChatMenuButton', { menu_button: { type: 'web_app', ...appButton } });
   console.log('Telegram bot ishga tushdi.');
 

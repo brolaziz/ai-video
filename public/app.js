@@ -168,8 +168,6 @@ window.matchMedia('(max-width: 720px)').addEventListener('change', () => setMenu
 
 const demos = {
   mountain: { title: 'Qor chizig‘i', description: 'Qorli tog‘ sahnasidagi chuqurlik va kameraning sekin yaqinlashuvi.' },
-  product: { title: 'Studiyadagi mahsulot', description: 'Moviy yorug‘lik ostidagi quloqchinlar uchun qisqa reklama kadri.' },
-  story: { title: 'Samarqand oqshomi', description: 'Me’moriy kadrda rang, masshtab va oqshom yorug‘ligi.' },
 };
 
 const editorButton = select('.editor-image');
