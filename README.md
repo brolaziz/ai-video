@@ -14,8 +14,14 @@ Node.js 22.13 yoki undan yangi versiya kerak. Loyiha papkasida `npm run dev` buy
 
 1. Forma va sahifani birga ishga tushirish uchun `npm start` buyrug‘ini ommaviy HTTPS proksi ortida bajaring va hostingga mos `HOST` hamda `PORT` qiymatlarini kiriting.
 2. `.env.example` nusxasini `.env` nomi bilan saqlang. `TELEGRAM_BOT_TOKEN` uchun BotFather bergan tokenni, `MINI_APP_URL` uchun ommaviy HTTPS manzilini kiriting. Tokenni faqat serverdagi `.env` yoki hostingning maxfiy sozlamalarida saqlang.
-3. `npm run bot` buyrug‘ini ishga tushiring. Bot `/start`, `/dastur`, `/savollar`, `/yozilish` va `/yordam` buyruqlariga javob beradi. Bot profiliga `bot-avatar.png` rasmini yuklang. Telegram profilidagi Launch App tugmasi kerak bo‘lsa, BotFather orqali Main Mini App manzilini sozlang.
-4. Narx, darslar va yordam uchun Telegram manzili tasdiqlanganda `public/course.js` faylini yangilang. Avtomatik to‘lov va darslarga avtomatik kirish hali ulanmagan.
+3. `npm run bot` buyrug‘ini ishga tushiring. `/start` javobida «Mini App’ni ochish» tugmasi chiqadi. BotFather orqali profilga `bot-avatar.png` rasmini yuklang. Telegram profilidagi Launch App tugmasi kerak bo‘lsa, BotFather orqali Main Mini App manzilini sozlang.
+4. Narx yoki darslar o‘zgarsa, `public/course.js` faylini yangilang.
+
+### Railway’da arizalar va to‘lov bo‘yicha yozish
+
+1. O‘z akkauntingizdan botga `/start`, keyin `/chatid` yuboring va qaytgan raqamni oling.
+2. Sayt servisining **Variables** bo‘limida `TELEGRAM_ADMIN_CHAT_ID` uchun shu raqamni va `TELEGRAM_BOT_TOKEN` uchun bot servisidagi tokenni kiriting. Yangi ariza avval bazaga yoziladi, keyin bot sizga xabar yuboradi. Telegram vaqtincha ishlamasa, xabar navbatda qoladi va qayta yuboriladi.
+3. Sayt servisining **Variables** bo‘limida `TELEGRAM_PAYMENT_USERNAME` uchun o‘z ommaviy Telegram username’ingizni kiriting. «To‘lov qilish» tugmasi akkauntingiz bilan suhbatni ochadi va «To‘lov qilmoqchiman» matnini tayyorlaydi. Xabarni xaridor yuboradi.
 
 ## Demo materiallar
 

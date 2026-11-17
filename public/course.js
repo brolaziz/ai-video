@@ -1,7 +1,6 @@
 export const course = {
   title: 'AI yordamida video yaratish',
   intro: 'G‘oyadan tayyor rolikkacha. Kadr yaratish, unga harakat berish va montaj qilishni o‘rganing.',
-  supportUsername: '',
   price: '250 000 so‘m',
   programNote: 'Yakuniy dars dasturi keyin e’lon qilinadi.',
   topics: [
@@ -15,14 +14,3 @@ export const course = {
     { title: 'Namunalarni qayerda ko‘rish mumkin?', description: 'To‘rt xil uslubdagi kadrlar «Tasvir namunalari» bo‘limida. Qisqa videoni bosh ekrandagi «Demoni ko‘rish» tugmasi ochadi.' },
   ],
 };
-
-const supportHandle = course.supportUsername.replace(/^@/, '');
-export const supportLink = /^[a-zA-Z0-9_]{5,32}$/.test(supportHandle) ? `https://t.me/${supportHandle}` : '';
-
-export const questions = [
-  ...course.questions,
-  {
-    title: 'Kurs narxi qancha?',
-    description: course.price ? `Kurs narxi — ${course.price}.` : 'Yakuniy narx tasdiqlangach, shu sahifada e’lon qilinadi.',
-  },
-];

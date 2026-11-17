@@ -72,6 +72,24 @@ const submitButton = form.querySelector('button[type="submit"]');
 const fields = ['name', 'phone', 'telegramUsername'].map((name) => form.elements.namedItem(name));
 const submitLabel = submitButton.textContent;
 
+const payment = select('.payment-contact');
+const paymentLink = payment.querySelector('[data-payment-link]');
+fetch('/api/payment-link')
+  .then((response) => response.ok ? response.json() : null)
+  .then((config) => {
+    if (!config?.url) return;
+    paymentLink.href = config.url;
+    payment.hidden = false;
+  })
+  .catch(() => {});
+
+if (insideTelegram && typeof telegram.openTelegramLink === 'function') {
+  paymentLink.addEventListener('click', (event) => {
+    telegram.openTelegramLink(paymentLink.href);
+    event.preventDefault();
+  });
+}
+
 select('.header-cta').addEventListener('click', (event) => {
   if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
     setMenu(false);

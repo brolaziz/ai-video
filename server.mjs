@@ -4,9 +4,13 @@ import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
 import { pipeline } from 'node:stream';
 import { fileURLToPath } from 'node:url';
-import { handleEnrollment } from './enrollments.mjs';
+import { handleEnrollment, startEnrollmentNotifications } from './enrollments.mjs';
 
 const root = fileURLToPath(new URL('./public', import.meta.url));
+const paymentUsername = process.env.TELEGRAM_PAYMENT_USERNAME?.trim().replace(/^@/, '') ?? '';
+const paymentLink = /^[a-zA-Z0-9_]{1,32}$/.test(paymentUsername)
+  ? `https://t.me/${paymentUsername}?text=${encodeURIComponent('To‘lov qilmoqchiman')}`
+  : null;
 const types = {
   '.html': 'text/html; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
@@ -39,6 +43,11 @@ createServer(async (request, response) => {
     }
     if (!['GET', 'HEAD'].includes(request.method)) {
       response.writeHead(405, { Allow: 'GET, HEAD' }).end();
+      return;
+    }
+    if (pathname === '/api/payment-link') {
+      response.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8', 'Cache-Control': 'no-store' })
+        .end(request.method === 'HEAD' ? undefined : JSON.stringify({ url: paymentLink }));
       return;
     }
     const file = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
@@ -76,4 +85,5 @@ createServer(async (request, response) => {
 }).listen(Number(process.env.PORT ?? 4173), process.env.HOST ?? '127.0.0.1', function () {
   const { address, port } = this.address();
   console.log(`Kurs sahifasi http://${address}:${port}`);
+  startEnrollmentNotifications();
 });

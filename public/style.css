@@ -200,6 +200,9 @@ img { display: block; max-inline-size: 100%; }
 .field-error, .form-status[data-state='error'] { color: #a3322b; }
 .form-status:empty { position: absolute; }
 .form-status[data-state='success'] { color: #1a6047; font-weight: 650; }
+.payment-contact { display: grid; gap: 6px; }
+.payment-contact .button { min-height: 46px; }
+.payment-contact p { color: var(--muted); font-size: 13px; text-align: center; }
 .footer { display: flex; justify-content: space-between; align-items: center; gap: 15px; min-height: 84px; padding-block: 15px calc(15px + var(--content-bottom)); color: var(--muted); font-size: 14px; }
 .back-to-top { display: inline-flex; align-items: center; gap: 7px; min-height: 44px; color: var(--blue-dark); font-size: 14px; font-weight: 650; }
 .back-to-top .icon { width: 15px; height: 15px; transform: rotate(-90deg); }
