@@ -9,6 +9,6 @@
     "start": "node --env-file-if-exists=.env server.mjs",
     "bot": "node --env-file-if-exists=.env bot.mjs",
     "leads": "node --env-file-if-exists=.env leads.mjs",
-    "check": "node --check server.mjs && node --check bot.mjs && node --check telegram.mjs && node --check enrollments.mjs && node --check leads.mjs && node --check public/course.js && node --check public/enrollment-fields.js && node --check public/app.js"
+    "check": "node --check server.mjs && node --check bot.mjs && node --check telegram.mjs && node --check leads.mjs && node --check public/course.js && node --check public/app.js"
   }
 }

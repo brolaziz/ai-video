@@ -1,6 +1,11 @@
 import { existsSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { DatabaseSync } from 'node:sqlite';
-import { enrollmentDbPath } from './enrollments.mjs';
+import { fileURLToPath } from 'node:url';
+
+const enrollmentDbPath = process.env.ENROLLMENT_DB_PATH
+  ? resolve(process.env.ENROLLMENT_DB_PATH)
+  : fileURLToPath(new URL('./data/enrollments.sqlite', import.meta.url));
 
 if (!existsSync(enrollmentDbPath)) {
   console.log('Hozircha arizalar yo‘q.');

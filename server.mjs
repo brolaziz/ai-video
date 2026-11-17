@@ -4,7 +4,6 @@ import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
 import { pipeline } from 'node:stream';
 import { fileURLToPath } from 'node:url';
-import { handleEnrollment, startEnrollmentNotifications } from './enrollments.mjs';
 
 const root = fileURLToPath(new URL('./public', import.meta.url));
 const paymentUsername = process.env.TELEGRAM_PAYMENT_USERNAME?.trim().replace(/^@/, '') ?? '';
@@ -37,10 +36,6 @@ createServer(async (request, response) => {
 
   try {
     const pathname = decodeURIComponent(new URL(request.url, 'http://localhost').pathname);
-    if (pathname === '/api/enrollments') {
-      await handleEnrollment(request, response);
-      return;
-    }
     if (!['GET', 'HEAD'].includes(request.method)) {
       response.writeHead(405, { Allow: 'GET, HEAD' }).end();
       return;
@@ -85,5 +80,4 @@ createServer(async (request, response) => {
 }).listen(Number(process.env.PORT ?? 4173), process.env.HOST ?? '127.0.0.1', function () {
   const { address, port } = this.address();
   console.log(`Kurs sahifasi http://${address}:${port}`);
-  startEnrollmentNotifications();
 });

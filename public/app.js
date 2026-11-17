@@ -1,5 +1,4 @@
 import { course } from './course.js';
-import { validateEnrollment } from './enrollment-fields.js';
 
 const telegram = window.Telegram?.WebApp;
 const insideTelegram = Boolean(telegram && telegram.platform !== 'unknown');
@@ -66,22 +65,17 @@ const price = select('[data-price]');
 price.textContent = course.price;
 price.hidden = !course.price;
 
-const form = select('.enrollment-form');
-const formStatus = form.querySelector('.form-status');
-const submitButton = form.querySelector('button[type="submit"]');
-const fields = ['name', 'phone', 'telegramUsername'].map((name) => form.elements.namedItem(name));
-const submitLabel = submitButton.textContent;
-
-const payment = select('.payment-contact');
-const paymentLink = payment.querySelector('[data-payment-link]');
+const paymentLink = select('[data-payment-link]');
+const contactUnavailable = select('.contact-unavailable');
 fetch('/api/payment-link')
   .then((response) => response.ok ? response.json() : null)
   .then((config) => {
+    contactUnavailable.hidden = Boolean(config?.url);
     if (!config?.url) return;
     paymentLink.href = config.url;
-    payment.hidden = false;
+    paymentLink.hidden = false;
   })
-  .catch(() => {});
+  .catch(() => { contactUnavailable.hidden = false; });
 
 if (insideTelegram && typeof telegram.openTelegramLink === 'function') {
   paymentLink.addEventListener('click', (event) => {
@@ -93,67 +87,7 @@ if (insideTelegram && typeof telegram.openTelegramLink === 'function') {
 select('.header-cta').addEventListener('click', (event) => {
   if (!event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
     setMenu(false);
-    select('#enrollment-title').focus({ preventScroll: true });
-  }
-});
-
-function setStatus(message, state = '') {
-  formStatus.textContent = message;
-  formStatus.dataset.state = state;
-}
-
-function setFieldError(field, message) {
-  const hint = select(`#${field.id}-error`);
-  hint.textContent = message ?? '';
-  hint.hidden = !message;
-  if (message) field.setAttribute('aria-invalid', 'true');
-  else field.removeAttribute('aria-invalid');
-}
-
-function showFieldErrors(errors) {
-  for (const field of fields) setFieldError(field, errors[field.name]);
-  const firstInvalid = fields.find((field) => errors[field.name]);
-  firstInvalid?.focus();
-  return Boolean(firstInvalid);
-}
-
-for (const field of fields) {
-  field.addEventListener('input', () => {
-    setFieldError(field);
-    setStatus('');
-  });
-}
-
-form.noValidate = true;
-form.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  if (submitButton.disabled) return;
-  setStatus('');
-
-  const { name, phone, telegramUsername, errors } = validateEnrollment(Object.fromEntries(new FormData(form)));
-  if (showFieldErrors(errors)) return;
-
-  submitButton.disabled = true;
-  submitButton.textContent = 'Yuborilmoqda…';
-  for (const field of fields) field.readOnly = true;
-
-  try {
-    const response = await fetch(form.action, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, phone, telegramUsername }),
-      signal: AbortSignal.timeout(12000),
-    });
-    if (response.status === 422 && showFieldErrors((await response.json()).errors ?? {})) return;
-    if (!response.ok || !(await response.json()).ok) throw new Error('Enrollment failed');
-    form.reset();
-    setStatus('Arizangiz qabul qilindi. Kurs bo‘yicha siz bilan bog‘lanamiz.', 'success');
-  } catch {
-    setStatus('Ariza yuborilmadi. Qayta urinib ko‘ring.', 'error');
-  } finally {
-    for (const field of fields) field.readOnly = false;
-    submitButton.disabled = false;
-    submitButton.textContent = submitLabel;
+    select('#contact-title').focus({ preventScroll: true });
   }
 });
 

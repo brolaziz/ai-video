@@ -6,22 +6,20 @@ Kurs sahifasi va Telegram bot.
 
 Node.js 22.13 yoki undan yangi versiya kerak. Loyiha papkasida `npm run dev` buyrug‘ini ishga tushiring va [lokal sahifani](http://127.0.0.1:4173/) oching. Sintaksis tekshiruvi uchun `npm run check` buyrug‘idan foydalaning.
 
-## Arizalarni ko‘rish
+## Avval saqlangan arizalar
 
-«Kursga yozilish» formasidagi ism, telefon raqami va ixtiyoriy Telegram username `data/enrollments.sqlite` faylida saqlanadi. Bir telefon raqami uchun bitta ariza saqlanadi. Arizalarni ko‘rish uchun serverdagi loyiha papkasida `npm run leads` buyrug‘ini bajaring. Hostingda baza doimiy diskda saqlanishi uchun `ENROLLMENT_DB_PATH` sozlamasini shu diskdagi fayl yo‘liga o‘rnating.
+Avval saqlangan arizalarni `npm run leads` orqali ko‘rish mumkin. Bu buyruq `ENROLLMENT_DB_PATH` sozlangan faylni yoki `data/enrollments.sqlite` faylini o‘qiydi.
 
 ## Telegramga ulash
 
-1. Forma va sahifani birga ishga tushirish uchun `npm start` buyrug‘ini ommaviy HTTPS proksi ortida bajaring va hostingga mos `HOST` hamda `PORT` qiymatlarini kiriting.
+1. Saytni ishga tushirish uchun `npm start` buyrug‘ini ommaviy HTTPS proksi ortida bajaring va hostingga mos `HOST` hamda `PORT` qiymatlarini kiriting.
 2. `.env.example` nusxasini `.env` nomi bilan saqlang. `TELEGRAM_BOT_TOKEN` uchun BotFather bergan tokenni, `MINI_APP_URL` uchun ommaviy HTTPS manzilini kiriting. Tokenni faqat serverdagi `.env` yoki hostingning maxfiy sozlamalarida saqlang.
 3. `npm run bot` buyrug‘ini ishga tushiring. `/start` javobida «Mini App’ni ochish» tugmasi chiqadi. BotFather orqali profilga `bot-avatar.png` rasmini yuklang. Telegram profilidagi Launch App tugmasi kerak bo‘lsa, BotFather orqali Main Mini App manzilini sozlang.
 4. Narx yoki darslar o‘zgarsa, `public/course.js` faylini yangilang.
 
-### Railway’da arizalar va to‘lov bo‘yicha yozish
+### Railway’da admin bilan bog‘lanish
 
-1. O‘z akkauntingizdan botga `/start`, keyin `/chatid` yuboring va qaytgan raqamni oling.
-2. Sayt servisining **Variables** bo‘limida `TELEGRAM_ADMIN_CHAT_ID` uchun shu raqamni va `TELEGRAM_BOT_TOKEN` uchun bot servisidagi tokenni kiriting. Yangi ariza avval bazaga yoziladi, keyin bot sizga xabar yuboradi. Telegram vaqtincha ishlamasa, xabar navbatda qoladi va qayta yuboriladi.
-3. Sayt servisining **Variables** bo‘limida `TELEGRAM_PAYMENT_USERNAME` uchun o‘z ommaviy Telegram username’ingizni kiriting. «To‘lov qilish» tugmasi akkauntingiz bilan suhbatni ochadi va «To‘lov qilmoqchiman» matnini tayyorlaydi. Xabarni xaridor yuboradi.
+Sayt servisining **Variables** bo‘limida `TELEGRAM_PAYMENT_USERNAME` uchun o‘z ommaviy Telegram username’ingizni kiriting. «Telegram’da adminga yozish» tugmasi akkauntingiz bilan suhbatni ochadi va «To‘lov qilmoqchiman» matnini tayyorlaydi.
 
 ## Demo materiallar
 

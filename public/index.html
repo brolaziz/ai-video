@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#f4f7ff">
-  <meta name="description" content="AI yordamida professional video yaratish kursi. Tasvir namunalari, kurs yo‘nalishlari va yozilish formasi.">
+  <meta name="description" content="AI yordamida professional video yaratish kursi. Tasvir namunalari, kurs yo‘nalishlari va Telegramda bog‘lanish.">
   <title>AI yordamida video yaratish</title>
   <link rel="preload" href="/assets/rethink-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
@@ -31,7 +31,7 @@
         <a href="#dastur">Kurs haqida</a>
         <a href="#savollar">Savollar</a>
       </nav>
-      <a class="button button-outline header-cta" href="#yozilish"><svg class="icon" aria-hidden="true"><use href="#send"/></svg>Kursga yozilish</a>
+      <a class="button button-outline header-cta" href="#yozilish"><svg class="icon" aria-hidden="true"><use href="#send"/></svg>Admin bilan bog‘lanish</a>
     </div>
   </header>
 
@@ -107,36 +107,15 @@
       <div class="faq" data-faq></div>
     </section>
 
-    <section class="enrollment" id="yozilish" aria-labelledby="enrollment-title">
-      <div class="container enrollment-inner">
-        <div class="enrollment-copy">
-          <h2 id="enrollment-title" tabindex="-1">Kursga yozilish</h2>
-          <p>Kurs bo‘yicha bog‘lanishimiz uchun ma’lumotlaringizni qoldiring.</p>
-          <p class="enrollment-price" data-price hidden></p>
+    <section class="contact" id="yozilish" aria-labelledby="contact-title">
+      <div class="container contact-inner">
+        <div class="contact-copy">
+          <h2 id="contact-title" tabindex="-1">Admin bilan bog‘lanish</h2>
+          <p>Kursga yozilish uchun Telegram’da adminga yozing.</p>
+          <p class="contact-price" data-price hidden></p>
         </div>
-        <form class="enrollment-form" action="/api/enrollments" method="post" aria-labelledby="enrollment-title">
-          <div class="form-field">
-            <label for="enrollment-name">Ismingiz</label>
-            <input id="enrollment-name" name="name" type="text" autocomplete="given-name" maxlength="80" required aria-describedby="enrollment-name-error">
-            <span id="enrollment-name-error" class="field-error" hidden></span>
-          </div>
-          <div class="form-field">
-            <label for="enrollment-phone">Telefon raqamingiz</label>
-            <input id="enrollment-phone" name="phone" type="tel" autocomplete="tel" maxlength="32" placeholder="+998 90 123 45 67" required aria-describedby="enrollment-phone-error">
-            <span id="enrollment-phone-error" class="field-error" hidden></span>
-          </div>
-          <div class="form-field">
-            <label for="enrollment-telegram">Telegram username (ixtiyoriy)</label>
-            <input id="enrollment-telegram" name="telegramUsername" type="text" autocomplete="off" autocapitalize="none" spellcheck="false" maxlength="33" placeholder="@username" aria-describedby="enrollment-telegram-error">
-            <span id="enrollment-telegram-error" class="field-error" hidden></span>
-          </div>
-          <button class="button button-primary" type="submit">Ariza yuborish</button>
-          <div class="form-status" role="status" aria-atomic="true"></div>
-          <div class="payment-contact" hidden>
-            <a class="button button-outline" data-payment-link aria-describedby="payment-help"><svg class="icon" aria-hidden="true"><use href="#send"/></svg>To‘lov qilish</a>
-            <p id="payment-help">Telegramda to‘lov bo‘yicha yozish uchun.</p>
-          </div>
-        </form>
+        <a class="button button-outline contact-button" data-payment-link hidden><svg class="icon" aria-hidden="true"><use href="#send"/></svg>Telegram’da adminga yozish</a>
+        <p class="contact-unavailable" role="status" hidden>Telegram aloqasi hozircha mavjud emas.</p>
       </div>
     </section>
   </main>

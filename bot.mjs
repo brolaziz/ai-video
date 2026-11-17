@@ -22,15 +22,8 @@ async function handle(update) {
   const message = update.message;
   if (!message || message.chat.type !== 'private' || !message.text) return;
 
-  const chatId = message.chat.id;
-  const command = message.text.trim().split(/[@\s]/, 1)[0];
-  if (command === '/chatid') {
-    await api('sendMessage', { chat_id: chatId, text: `Chat ID: ${chatId}` });
-    return;
-  }
-
   await api('sendMessage', {
-    chat_id: chatId,
+    chat_id: message.chat.id,
     text: 'Kurs sahifasini ochish uchun pastdagi tugmani bosing.',
     reply_markup: { inline_keyboard: [[appButton]] },
   });
